@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        String rutaString = "/Users/padrejulian/Documents/accesoADatos/ficheros/src/ejercicio6/datos806.dat";
+        String rutaString = "/Users/padrejulian/Documents/AccesoADatos/ficheros/src/ejercicio6/pepe.txt";
          try {
             datosNumRe(rutaString);
         } catch (IOException e) {
@@ -19,13 +19,13 @@ public class Main {
     private static void datosNumRe(String ruta) throws IOException{
 
         FileReader fileReader = new FileReader(ruta);
-        ArrayList <Character> arrayList = new ArrayList<>();
+        ArrayList <Integer> arrayList = new ArrayList<>();
 
 
         int i;
 
         while ((i = fileReader.read()) !=-1) {
-            arrayList.add((char)i);
+            arrayList.add(i);
         }
         int numero = 1;
         double suma = 0;
@@ -38,7 +38,7 @@ public class Main {
                 numero++;
             }
 
-            suma += Character.getNumericValue(arrayList.get(p));
+            suma += arrayList.get(p);
 
             if (arrayList.get(p) > nMayor) {
                 nMayor = arrayList.get(p);
@@ -53,9 +53,8 @@ public class Main {
         double media = suma/numero;
 
 
-        System.out.println("La media es: "+ media);
-        System.out.println("El numero mas grande es: "+ nMayor);
-        System.out.println("El numero mas pequeño es: "+nMenor);
+        System.out.println("La media es: "+ suma);
+        
        
         fileReader.close();
     }
